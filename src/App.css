@@ -1,0 +1,36 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,500;1,700&display=swap");
+
+.btn-primary {
+  @apply bg-cyan-400 text-white text-sm font-bold rounded-full py-2 px-6 hover:bg-cyan-400/60;
+}
+
+.btn-primary-xl {
+  @apply bg-cyan-400 text-white text-xl font-bold rounded-full py-4 px-10 hover:bg-cyan-400/60;
+}
+
+/* Unable to get linear gradient working in tailwind.
+Temp solution: Extended style to tailwind.config `split-white-gray`
+               with modified hsl > hsla to match opacity in code */
+.bg-split-colors {
+  /* @apply bg-gradient-to-b from-white to-white/50 from-red-500 to-red-500/50; */
+  /* @apply bg-gradient-to-b from-white from-0% to-white to-50% from-red-500 from-50% to-red-500 to-100%; */
+
+  /* background: linear-gradient(
+    to bottom,
+    white 0%,
+    white 50%,
+    red 50%,
+    red 100%
+  ); */
+}
+
+a {
+  @apply font-bold hover:text-primary-dark-violet;
+}
