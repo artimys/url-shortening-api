@@ -10,9 +10,15 @@ function Header() {
           <img src={shortlyLogo} className="md:w-34" alt="Shortly Logo" />
         </a>
 
-        <HamburgerMenu classes="md:hidden ml-auto" />
+        <input type="checkbox" className="hidden peer" name="menu" id="menu" />
+        <label htmlFor="menu" className="ml-auto cursor-pointer md:hidden">
+          <HamburgerMenu />
+        </label>
 
-        <nav className="absolute py-10 text-center idden bg-primary-dark-violet rounded-xl top-24 left-8 inset-x-8 px-7 md:w-full md:static md:bg-transparent md:rounded-none md:top-auto md:left-auto md:inset-auto md:px-0 md:py-0 md:text-left ">
+        <nav
+          role="navigation"
+          className="absolute hidden py-10 text-center peer-checked:block md:block bg-primary-dark-violet rounded-xl top-24 left-8 inset-x-8 px-7 md:w-full md:static md:bg-transparent md:rounded-none md:top-auto md:left-auto md:inset-auto md:px-0 md:py-0 md:text-left "
+        >
           <ul className="flex flex-col gap-8 text-xl md:text-sm md:items-center md:flex-row">
             <li>
               <a
