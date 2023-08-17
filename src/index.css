@@ -39,3 +39,9 @@ h6 {
   font-weight: 700;
   color: var(--very-dark-blue);
 }
+
+@layer component {
+  .mobile__menu[aria-expanded="false"] {
+    display: none;
+  }
+}
