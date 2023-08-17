@@ -4,7 +4,7 @@ import ShortenLink from "./ShortenLink";
 function ShortenUrlResults() {
   return (
     <>
-      <div className="bg-neutral/20 pt-4">
+      <div className="pt-4 bg-neutral/20">
         <div className="container pb-10 space-y-3">
           <ShortenLink
             shortLink="https://rel.ink/k4Kyk"
@@ -13,7 +13,7 @@ function ShortenUrlResults() {
 
           <ShortenLink
             shortLink="https://rel.ink/k4Kyk"
-            link="https://www.frontendmentor.io"
+            link="https://www.frontendmentor.io/profile/artimys"
           />
 
           <ShortenLink
