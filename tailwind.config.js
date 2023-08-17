@@ -9,22 +9,22 @@ export default {
 
       colors: {
         primary: {
-          DEFAULT: "#2acfcf",
-          cyan: "#2acfcf", // hsl(180, 66%, 49%)
-          "dark-violet": "#3b3054", // hsl(257, 27%, 26%)
+          DEFAULT: "hsl(180, 66%, 49%)",
+          cyan: "hsl(180, 66%, 49%)",
+          "dark-violet": "hsl(259, 27%, 26%)",
         },
 
         secondary: {
-          DEFAULT: "#3b3054",
-          red: "#f46262", // hsl(0, 87%, 67%)
+          DEFAULT: "hsl(0, 87%, 67%)",
+          red: "hsl(0, 87%, 67%)",
         },
 
         neutral: {
-          DEFAULT: "#bfbfbf",
+          DEFAULT: "hsl(0, 0%, 75%)",
           gray: "hsl(0, 0%, 75%)",
-          "grayish-violet": "#9e9aa7", // hsl(257, 7%, 63%)
-          "very-dark-blue": "#35323e", // hsl(255, 11%, 22%)
-          "very-dark-violet": "#232127", // hsl(260, 8%, 14%)
+          "grayish-violet": "hsl(257, 7%, 63%)",
+          "very-dark-blue": "hsl(255, 11%, 22%)",
+          "very-dark-violet": "hsl(260, 8%, 14%)",
         },
 
         cyan: {
