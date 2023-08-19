@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 function ShortenUrlForm() {
+  const [apiErrorMessage, setApiErrorMessage] = useState(null);
   const [links, setLinks] = useState([
     {
       id: Math.floor(Math.random() * 1000),
@@ -23,17 +24,19 @@ function ShortenUrlForm() {
   ]);
 
   const onSubmit = async (values, actions) => {
-    // console.log(values);
-    // console.log(actions);
-    // await new Promise((r) => setTimeout(r, 1000));
-
     try {
       const response = await fetch(
         "https://api.shrtco.de/v2/shorten?url=" + values.website
       );
+
       const data = await response.json();
 
-      // console.log(data);
+      // For this API, checking for errors on `data` as it contains
+      // better errors instead of `response` object
+      if (!data.ok) {
+        console.table(data);
+        throw new Error(data.error);
+      }
 
       const newLink = {
         id: Math.floor(Math.random() * 1000),
@@ -43,13 +46,26 @@ function ShortenUrlForm() {
 
       setLinks((prevLinks) => [...prevLinks, newLink]);
 
-      // TODO - check if status not OKAY
-      // TODO - add http to textbox is missing
-
-      // actions.resetForm();
+      actions.resetForm();
     } catch (error) {
-      console.log(error);
-      // TODO - throw error
+      console.log("onSubmit:", error);
+      setApiErrorMessage("Something's not working, please try again later.");
+      // setApiErrorMessage(String(error));
+    }
+  };
+
+  const prependProtocol = (event) => {
+    handleBlur(event);
+
+    if (values.website.trim().length === 0) {
+      return;
+    }
+
+    const hasHTTPProtocolRegex = /^https?:\/\/.*$/i;
+
+    if (!hasHTTPProtocolRegex.test(values.website)) {
+      const linkWithProtocol = "http://" + values.website;
+      setFieldValue("website", linkWithProtocol);
     }
   };
 
@@ -57,15 +73,16 @@ function ShortenUrlForm() {
     values,
     errors,
     touched,
+    setFieldValue,
     handleBlur,
     handleChange,
     handleSubmit,
     isSubmitting,
   } = useFormik({
     initialValues: {
-      website: "https://frontendmentor.io",
+      website: "",
+      // website: "https://frontendmentor.io",
     },
-
     validationSchema: yup.object().shape({
       website: yup
         .string()
@@ -74,8 +91,6 @@ function ShortenUrlForm() {
     }),
     onSubmit,
   });
-
-  // console.log(errors);
 
   return (
     <>
@@ -89,22 +104,28 @@ function ShortenUrlForm() {
               <input
                 value={values.website}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                onBlur={prependProtocol}
                 id="website"
                 name="website"
                 type="text"
                 autoComplete="off"
                 placeholder="Shorten a link here..."
-                className={`w-full py-5 pl-6 text-xl rounded-md outline ${
+                className={`w-full py-4 pl-6 text-xl rounded-md ${
                   errors.website && touched.website
-                    ? " outline-secondary-red"
+                    ? " outline outline-secondary-red placeholder:text-secondary-red/50"
                     : ""
                 } `}
               />
 
               {errors.website && touched.website && (
-                <span className="block text-xs italic md:text-sm text-secondary-red lg:absolute">
+                <span className="block text-xs italic md:text-base text-secondary-red lg:absolute">
                   {errors.website}
+                </span>
+              )}
+
+              {apiErrorMessage && (
+                <span className="block text-xs italic md:text-base text-secondary-red lg:absolute">
+                  {apiErrorMessage}
                 </span>
               )}
             </div>
@@ -114,7 +135,7 @@ function ShortenUrlForm() {
               disabled={isSubmitting}
               type="submit"
             >
-              Shorten It!
+              {isSubmitting ? "Shortening..." : "Shorten It!"}
             </button>
           </form>
         </div>
