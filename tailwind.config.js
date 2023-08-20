@@ -52,6 +52,8 @@ export default {
       },
 
       backgroundImage: {
+        "illustration-working": "url('/illustration-working.svg')",
+
         "shorten-desktop": "url('/bg-shorten-desktop.svg')",
         "shorten-mobile": "url('/bg-shorten-mobile.svg')",
 
