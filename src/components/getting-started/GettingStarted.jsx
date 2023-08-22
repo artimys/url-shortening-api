@@ -4,18 +4,18 @@ import illustrationWorking from "/illustration-working.svg";
 function GettingStarted() {
   return (
     <>
-      <div className="container flex flex-col-reverse mb-20 text-center lg:flex-row lg:text-left">
-        <div className="space-y-6 lg:w-2/3">
-          <h1 className="text-5xl font-bold lg:text-7xl mt-14 lg:mt-16">
+      <div className="container flex flex-col-reverse mb-24 text-center lg:mb-16 lg:flex-row lg:text-left lg:mt-10">
+        <div className="xspace-y-6 lg:w-2/3">
+          <h1 className="mb-6 lg:mb-1 text-5xl font-bold lg:leading-[5rem] lg:text-7xl mt-14 lg:mt-16">
             More than just shorter links
           </h1>
 
-          <p className="text-xl">
+          <p className="text-xl leading-8">
             Build your brand's recognition and get detailed insights on how your
             links are performing.
           </p>
 
-          <button className="btn-primary-xl">Get Started</button>
+          <button className="mt-10 lg:mt-7 btn-primary-xl">Get Started</button>
         </div>
 
         <div className="">

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import shortlyLogo from "../../assets/logo.svg";
-import HamburgerMenu from "./HamburgerIcon";
+import HamburgerMenu from "../menu/HamburgerIcon";
 
 function Header() {
   const menuRef = useRef(null);

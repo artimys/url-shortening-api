@@ -1,6 +1,37 @@
 import React from "react";
+import FooterLinkList from "./FooterLinkList";
 
 function Footer() {
+  const footerLinkLists = [
+    {
+      id: 100,
+      title: "Features",
+      links: [
+        { id: 1, name: "Link Shortening", href: "#" },
+        { id: 2, name: "Banded Links", href: "#" },
+        { id: 3, name: "Analytics", href: "#" },
+      ],
+    },
+    {
+      id: 101,
+      title: "Resources",
+      links: [
+        { id: 4, name: "Blog", href: "#" },
+        { id: 5, name: "Developers", href: "#" },
+        { id: 6, name: "Support", href: "#" },
+      ],
+    },
+    {
+      id: 102,
+      title: "Company",
+      links: [
+        { id: 7, name: "About", href: "#" },
+        { id: 8, name: "Our Team", href: "#" },
+        { id: 9, name: "Careers", href: "#" },
+        { id: 10, name: "Contact", href: "#" },
+      ],
+    },
+  ];
   return (
     <>
       <footer className="bg-neutral-very-dark-violet py-14">
@@ -10,7 +41,7 @@ function Footer() {
               xmlns="http://www.w3.org/2000/svg"
               width="121"
               height="33"
-              class="mx-auto mb-10 lg:mx-0"
+              className="mx-auto mb-10 lg:mx-0"
             >
               <path
                 fill="#ffffff"
@@ -20,72 +51,13 @@ function Footer() {
           </div>
 
           <nav className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-            <div>
-              <h4 className="mb-5 text-base text-white">Features</h4>
-              <ul className="flex flex-col gap-3 text-sm">
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Link Shortening
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Branded Links
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Analytics
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="mb-5 text-base text-white">Resources</h4>
-              <ul className="flex flex-col gap-3 text-sm">
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Developers
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Support
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="mb-5 text-base text-white">Resources</h4>
-              <ul className="flex flex-col gap-3 text-sm">
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Our Team
-                  </a>
-                </li>
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Careers
-                  </a>
-                </li>
-
-                <li>
-                  <a className="font-normal hover:text-primary" href="#">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {footerLinkLists.map((footerLinkList) => (
+              <FooterLinkList
+                key={footerLinkList.id}
+                title={footerLinkList.title}
+                links={footerLinkList.links}
+              />
+            ))}
           </nav>
 
           <div className="flex items-center gap-6 mt-12 lg:mt-0">

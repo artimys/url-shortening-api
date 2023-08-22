@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 :root {
-  /*
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%; */
-
   /* Primary */
   --cyan: hsl(180, 66%, 49%);
   --dark-violet: hsl(257, 27%, 26%);
@@ -24,24 +17,48 @@
   --very-dark-violet: hsl(260, 8%, 14%);
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  color: var(--grayish-violet);
-}
+@layer base {
+  body {
+    @apply font-poppins text-[18px] text-neutral-grayish-violet;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  color: var(--very-dark-blue);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-neutral-very-dark-blue;
+  }
+
+  a {
+    @apply font-bold hover:text-primary-dark-violet;
+  }
 }
 
 @layer component {
   .mobile__menu[aria-expanded="false"] {
-    display: none;
+    @apply hidden;
+  }
+
+  .pseudo-cyan-bar {
+    @apply before:absolute before:bg-primary before:w-2 before:h-[90%] before:z-[-1] before:-m-1
+                            lg:before:h-2 lg:before:w-[90%] lg:before:top-[55%];
   }
 }
+
+/* Unable to get linear gradient working in tailwind.
+Temp solution: Extended style to tailwind.config `split-white-gray`
+               with modified hsl > hsla to match opacity in code */
+/* .bg-split-colors { */
+/* @apply bg-gradient-to-b from-white to-white/50 from-red-500 to-red-500/50; */
+/* @apply bg-gradient-to-b from-white from-0% to-white to-50% from-red-500 from-50% to-red-500 to-100%; */
+
+/* background: linear-gradient(
+    to bottom,
+    white 0%,
+    white 50%,
+    red 50%,
+    red 100%
+  ); */
+/* } */

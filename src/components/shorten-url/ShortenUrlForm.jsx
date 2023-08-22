@@ -8,18 +8,8 @@ function ShortenUrlForm() {
   const [links, setLinks] = useState([
     {
       id: Math.floor(Math.random() * 1000),
-      link: "https://www.frontendmentor.io",
-      shortLink: "https://rel.ink/k4Kyk",
-    },
-    {
-      id: Math.floor(Math.random() * 1000),
       link: "https://www.frontendmentor.io/profile/artimys",
-      shortLink: "https://rel.ink/k4Kyk",
-    },
-    {
-      id: Math.floor(Math.random() * 1000),
-      link: "https://www.linkedin.com/company/frontend-mentor",
-      shortLink: "https://rel.ink/k4Kyk",
+      shortLink: "https://shrtco.de/Xabypm",
     },
   ]);
 
