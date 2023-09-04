@@ -19,7 +19,7 @@ export default {
         primary: {
           DEFAULT: "hsl(180, 66%, 49%)",
           cyan: "hsl(180, 66%, 49%)",
-          "cyan-hover": "hsla(178, 60%, 75%, 1)",
+          "cyan-hover": "hsla(179, 56%, 75%, 1)", // "#9be3e2",
           "dark-violet": "hsl(259, 27%, 26%)",
         },
 
