@@ -16,7 +16,7 @@ function ShortenUrlForm() {
   const onSubmit = async (values, actions) => {
     try {
       const response = await fetch(
-        "https://api.shrtco.de/v2/shorten?url=" + values.website
+        "https://api.shrtco.de/v2/shorten?url=" + values.link
       );
 
       const data = await response.json();
@@ -47,15 +47,15 @@ function ShortenUrlForm() {
   const prependProtocol = (event) => {
     handleBlur(event);
 
-    if (values.website.trim().length === 0) {
+    if (values.link.trim().length === 0) {
       return;
     }
 
     const hasHTTPProtocolRegex = /^https?:\/\/.*$/i;
 
-    if (!hasHTTPProtocolRegex.test(values.website)) {
-      const linkWithProtocol = "http://" + values.website;
-      setFieldValue("website", linkWithProtocol);
+    if (!hasHTTPProtocolRegex.test(values.link)) {
+      const linkWithProtocol = "http://" + values.link;
+      setFieldValue("link", linkWithProtocol);
     }
   };
 
@@ -70,13 +70,17 @@ function ShortenUrlForm() {
     isSubmitting,
   } = useFormik({
     initialValues: {
-      website: "",
-      // website: "https://frontendmentor.io",
+      link: "",
+      // link: "https://frontendmentor.io",
     },
+    // validateOnChange: false,
+    // validateOnBlur: false,
     validationSchema: yup.object().shape({
-      website: yup
+      link: yup
         .string()
-        .url("Please add a link")
+        .url(
+          "Please enter a valid link (should begin with http:// or https://)"
+        )
         .required("Please add a link"),
     }),
     onSubmit,
@@ -92,24 +96,24 @@ function ShortenUrlForm() {
           >
             <div className="flex-1 space-y-2">
               <input
-                value={values.website}
+                value={values.link}
                 onChange={handleChange}
                 onBlur={prependProtocol}
-                id="website"
-                name="website"
+                id="link"
+                name="link"
                 type="text"
                 autoComplete="off"
                 placeholder="Shorten a link here..."
                 className={`w-full py-4 pl-6 text-xl rounded-md ${
-                  errors.website && touched.website
+                  errors.link && touched.link
                     ? " outline outline-secondary-red placeholder:text-secondary-red/50"
                     : ""
                 } `}
               />
 
-              {errors.website && touched.website && (
+              {errors.link && touched.link && (
                 <span className="block text-xs italic md:text-base text-secondary-red lg:absolute">
-                  {errors.website}
+                  {errors.link}
                 </span>
               )}
 
