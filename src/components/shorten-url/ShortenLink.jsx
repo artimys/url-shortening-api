@@ -8,6 +8,7 @@ function ShortenLink({ link, shortLink }) {
       .writeText(linkToCopy)
       .then(() => {
         setIsCopied(true);
+        console.log("Copied to clipboard");
         setTimeout(() => {
           setIsCopied(false);
         }, 2000);
@@ -30,11 +31,8 @@ function ShortenLink({ link, shortLink }) {
           onClick={() => {
             copyToClipboard(shortLink);
           }}
-          className={`md:w-40 px-0 rounded-md  ${
-            isCopied
-              ? "bg-primary-dark-violet hover:bg-primary-dark-violet"
-              : ""
-          } btn-primary md:ml-2`}
+          disabled={isCopied ? true : false}
+          className="px-0 rounded-md disabled:cursor-not-allowed md:w-40 disabled:bg-primary-dark-violet btn-primary md:ml-2"
         >
           {isCopied ? "Copied!" : "Copy"}
         </button>

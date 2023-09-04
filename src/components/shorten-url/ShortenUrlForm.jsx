@@ -4,10 +4,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 function ShortenUrlForm() {
-  const [apiErrorMessage, setApiErrorMessage] = useState(null);
   const [links, setLinks] = useState([
     {
-      id: Math.floor(Math.random() * 1000),
+      // id: Math.floor(Math.random() * 1000),
+      id: crypto.randomUUID(),
       link: "https://www.frontendmentor.io/profile/artimys",
       shortLink: "https://shrtco.de/Xabypm",
     },
@@ -23,13 +23,14 @@ function ShortenUrlForm() {
 
       // For this API, checking for errors on `data` as it contains
       // better errors instead of `response` object
+      // Errors: https://shrtco.de/docs
       if (!data.ok) {
         console.table(data);
         throw new Error(data.error);
       }
 
       const newLink = {
-        id: Math.floor(Math.random() * 1000),
+        id: crypto.randomUUID(),
         link: data.result.original_link,
         shortLink: data.result.full_short_link,
       };
@@ -38,9 +39,9 @@ function ShortenUrlForm() {
 
       actions.resetForm();
     } catch (error) {
-      console.log("onSubmit:", error);
-      setApiErrorMessage("Something's not working, please try again later.");
-      // setApiErrorMessage(String(error));
+      // console.log("onSubmit:", error);
+      // setFieldError("Something's not working, please try again later.");
+      setFieldError("link", String(error));
     }
   };
 
@@ -64,6 +65,7 @@ function ShortenUrlForm() {
     errors,
     touched,
     setFieldValue,
+    setFieldError,
     handleBlur,
     handleChange,
     handleSubmit,
@@ -114,12 +116,6 @@ function ShortenUrlForm() {
               {errors.link && touched.link && (
                 <span className="block text-xs italic md:text-base text-secondary-red lg:absolute">
                   {errors.link}
-                </span>
-              )}
-
-              {apiErrorMessage && (
-                <span className="block text-xs italic md:text-base text-secondary-red lg:absolute">
-                  {apiErrorMessage}
                 </span>
               )}
             </div>
