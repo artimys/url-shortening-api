@@ -37,7 +37,7 @@ function Header() {
           <ul className="flex flex-col gap-8 text-xl md:text-sm md:items-center md:flex-row">
             <li>
               <a
-                className="text-white hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
+                className="text-white transition-colors duration-150 hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
                 href="#"
               >
                 Features
@@ -45,7 +45,7 @@ function Header() {
             </li>
             <li>
               <a
-                className="text-white hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
+                className="text-white transition-colors duration-150 hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
                 href="#"
               >
                 Pricing
@@ -53,7 +53,7 @@ function Header() {
             </li>
             <li>
               <a
-                className="text-white hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
+                className="text-white transition-colors duration-150 hover:text-primary md:text-neutral-grayish-violet md:hover:text-primary-dark-violet"
                 href="#"
               >
                 Resources

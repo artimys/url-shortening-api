@@ -4,9 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,500;1,700&display=swap");
 
 .btn-primary {
-  @apply px-6 py-2 text-sm font-bold text-white rounded-full bg-primary-cyan hover:bg-primary-cyan-hover;
+  @apply px-6 py-2 text-sm font-bold text-white transition-colors duration-200 rounded-full bg-primary-cyan hover:bg-primary-cyan-hover;
 }
 
 .btn-primary-xl {
-  @apply px-10 py-4 text-xl font-bold text-white rounded-full bg-primary-cyan hover:bg-primary-cyan-hover;
+  @apply px-10 py-4 text-xl font-bold text-white transition-colors duration-200 rounded-full bg-primary-cyan hover:bg-primary-cyan-hover;
 }
