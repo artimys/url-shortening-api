@@ -30,7 +30,6 @@ function Header() {
         </button>
 
         <nav
-          role="navigation"
           aria-expanded={menuOpen}
           className="absolute z-10 py-10 text-center mobile__menu md:block bg-primary-dark-violet rounded-xl top-[6.1rem] left-8 inset-x-8 px-7 md:w-full md:static md:bg-transparent md:rounded-none md:top-auto md:left-auto md:inset-auto md:px-0 md:py-0 md:text-left "
         >
